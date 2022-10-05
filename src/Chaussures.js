@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     Card,
     CardBody,
@@ -9,23 +10,19 @@ import {
     DropdownItem,
     DropdownMenu,
     DropdownToggle,
-    UncontrolledDropdown
+    UncontrolledDropdown,
 } from 'reactstrap';
 
-function Chaussures(props) {
-    const nombre = localStorage.getItem('nb_product');
-
-    var handleClick = () => {
-        // props.handleClickParent(props.name+1);
-        console.log('test', nombre);
-        localStorage.setItem('nb_product', parseInt(nombre) + 1)
-
-        var i = localStorage.getItem('nb_product')
-        console.log('i', i)
-    }
+export default function Chaussures({qteShoes,onClick}) {
+    // var [qteShoes,setQteShoes] = useState (0);
+    // function addShoesToCart(){
+    //     setQteShoes(qteShoes + 1 );
+    //     console.log(qteShoes);
+    // }
     return (
         <div>
             <div>
+                
                 <Card
                     style={{
                         width: '18rem',
@@ -50,9 +47,10 @@ function Chaussures(props) {
                             Description .
                         </CardText>
                         <UncontrolledDropdown
-                        style={{ 
-                            margin : '5px'
-                        }}
+                            style={{
+                                margin: '5px'
+                            }}
+                            direction="down"
                         >
                             <DropdownToggle
                                 caret
@@ -73,7 +71,7 @@ function Chaussures(props) {
                                 <DropdownItem>
                                     42
                                 </DropdownItem>
-                                <DropdownItem  />
+                                <DropdownItem />
                                 <DropdownItem>
                                     43
                                 </DropdownItem>
@@ -85,8 +83,8 @@ function Chaussures(props) {
                                 </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
-                        <Button onClick={()=> handleClick()}>
-                            Ajouter au Panier
+                        <Button onClick={onClick}>
+                            Ajouter au panier
                         </Button>
                     </CardBody>
                 </Card>
@@ -94,4 +92,3 @@ function Chaussures(props) {
         </div>
     )
 }
-export default Chaussures;
